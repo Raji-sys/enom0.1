@@ -21,7 +21,6 @@ from django.utils.dateformat import DateFormat
 from datetime import  date
 from django.shortcuts import render
 from utils.ufun import con
-from django.core.exceptions import ValidationError
 
 
 #this functions generates csv reports with headers and body
