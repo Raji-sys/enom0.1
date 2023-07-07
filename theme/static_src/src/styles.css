@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* @import url("https://fonts.googleapis.com/css?family=Roboto"); */
+body {
+  text-align: center;
+  font-family: 'Roboto',"Lucida Grande",
+   "DejaVu Sans",
+   "Bitstream Vera Sans",
+   Verdana,
+   Arial,
+   sans-serif;
+  /* background-color: #f0f5ff; */
+  /* background-color: #f0f5ff; */
+}
+/* .bod{ */
+    /* background-color: rgb(248, 248, 248); */
+    /* font-family: 'mono'; */
+    /* @apply font-sans
+    background:linear-gradient(-45deg,#a3e9b7fa, #1b352b,#a3e9b7fa);
+   } */
+
+   input {
+    color: #5a5854;
+    padding: 3px;
+    background-color: white;
+    border: 1px solid #218c65;
+    border-radius: 4px;
+    @apply text-center p-2 w-1/2
+ }
+ 
+ input:hover {
+    border: 2px solid #07423c;
+    border-radius: 0.4rem; 
+ }
+
+ input:focus {
+    font-weight: bold;
+    background:linear-gradient(-45deg,#b6bfb9fa, #dff3ec, #ccd2cffa);
+    
+ }
+ .bBtn:hover{
+    border-radius: 1rem; 
+    
+ }
+ .inBtn{
+   background:linear-gradient(-45deg,#b6bfb9fa, #dff3ec, #ccd2cffa);
+   color:#07423c;
+    border-style: solid;
+     border-radius: 3px;
+    border-color: #07423c;
+    @apply p-2;
+ }
+ .bBtn{
+    /* background:linear-gradient(-45deg,#88b595fa, #364640, #a4dbc1fa); */
+    background:linear-gradient(-45deg,#0b6925fa, #218c65, #0de37ffa);
+    border-style: solid;
+    border-radius: 3px;
+    border-color: #07423c;
+    @apply p-2;
+ }
+ .bBtnlogout{
+    /* background:linear-gradient(-45deg,#88b595fa, #364640, #a4dbc1fa); */
+    background:linear-gradient(-45deg,#d30b0bfa, #90253c, #e30d5bfa);
+    border-style: solid;
+    color: white;
+    border-radius: 3px;
+    border-color: #420711;
+    @apply p-4;
+ }

@@ -1,0 +1,61 @@
+{% load static tailwind_tags %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="{% static 'fontawesomefree/css/fontawesome.css' %}" typpe='text/css'>
+		<!-- <link rel="stylesheet" href="{% static 'fontawesomefree/css/brand.css' %}" typpe='text/css'> -->
+		<link rel="stylesheet" href="{% static 'fontawesomefree/css/solid.css' %}" typpe='text/css'>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	</head>
+	<body class="bg-white leading-normal poppins tracking-normal">
+
+		<div class="container mx-auto">
+			<section class="items-center justify-center h-screen">
+				<header>
+					<nav class="flex justify-between m-4 p-2">
+						<div class="flex">
+						{% if request.user.is_authenticated and request.user.is_superuser %}
+						{% if request.path == '/' %}
+						{%else%}
+						  <div class="text-center">
+							<a href="{% url 'ems:home' %}" class=" mb-2 focus:opacity-10 border-b-2 border-gray-500 focus:border-green-600 
+							bg-gradient-to-l from-cyan-900 via-cyan-600 to-cyan-900 text-white px-10 p-2 rounded shadow-lg hover:shadow-xl 
+							text-center w-full"><i class="fa-solid fa-house fa-xl"></i></a>
+						</div> 
+
+						{%endif%}
+						</div>
+							<p>
+						<span class=" text-cyan-800 text-xl uppercase  px-10 py-4">
+						<a href="{% url 'ems:user' %}"><i class="fa-solid fa-circle-user fa-2xl"></i>
+							 <span class="border-b-4 border-cyan-800 text-md"> {{request.user}}</span></span></a>
+						<a class="mb-2 focus:opacity-10 border-b-4 border-gray-500 focus:border-green-600 bg-gradient-to-l from-red-900 via-red-700 to-red-900 text-white  
+						p-2 rounded shadow-lg hover:shadow-xl text-center text-xs w-full" href="{% url 'ems:logout' %}">
+						<i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>&nbsp;LOGOUT</a>
+					</p>
+						{% else %}
+						<!-- <a href="{% url 'ems:register' %}">register</a>
+						<a href="{% url 'ems:login' %}">login</a> -->
+						{% endif %}
+					</nav>
+				</header>
+				{% block main %}{% endblock %}
+			</section>
+		</div>
+		
+<style>
+.errorlist{
+    color:red;
+    font-size: larger;
+}
+</style>
+	</body>
+</html>

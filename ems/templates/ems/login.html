@@ -1,0 +1,66 @@
+{%extends "base.html" %}
+
+{% block title %}Login{% endblock%}
+
+{% block main %}
+<div class=" uppercase  flex flex-col sm:justify-center items-center sm:pt-0 md:pt-4 pb-6 px-20 md:px-0">
+    <div
+        class="border-2 border-green-800  w-full sm:max-w-lg mx-auto mt-4 md:p-12 p-8 bg-white shadow-2xl overflow-hidden sm:rounded-lg backdrop-blur-sm bg-white/90"
+    >
+    <section class=" text-center border-b-2 border-green-700 p-4 mb-4">
+        <p class="text-green-800  pt-4 ">sign in to your account</p>
+            {% for message in messages %}
+        <div class=" mt-4">
+            <hr>
+               <p class="text-rose-700 uppercase">{{ message }}</p>
+            <hr>
+        </div>
+        {% endfor %}
+    </section>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-2 uppercase  text-green-900">
+        <div class=" flex justify-center">
+            <label for="uname">username</label>
+        </div>
+        <p class="flex justify-center mb-6">
+            <input class="mt-2 focus:outline-none border-b-4 border-gray-300 inBtn text-white  py-2 rounded shadow-lg hover:shadow-xl " type="text" placeholder="enter your username" name="username" id="uname">
+        </p>
+        <div class=" flex justify-center">
+            <label for="password">password </label>
+        </div>
+        <p class=" flex justify-center">
+            <input class="mt-2 border-b-4 border-gray-300 inBtn text-white  py-2 rounded shadow-lg hover:shadow-xl " type="password" placeholder="enter your password" name="password" id="password">
+        </p>
+        </div>
+        <p class=" flex justify-center">
+            <input class="mt-2  focus:opacity-10 uppercase border-b-4 border-gray-500 focus:border-green-600 bg-gradient-to-r from-green-900 via-green-600 to-green-900 text-white  py-2 rounded shadow-lg hover:shadow-xl text-center w-1/2" type="submit" value="Login">
+        </p>
+    </form>
+    <div class="mt-4 flex items-center">
+        <p class=" mt-4 text-blue-900">don't have an account?
+            <a class="border-b-2 border-green-600 text-md text-green-800 ml-1" href="{%url 'ems:register' %}">register here</a>
+        </p>
+
+    </div>
+    {% endblock %}
+    </div>
+</div>
+<!-- <form action="" method="POST">
+    {% csrf_token %}
+    <label for="login">username
+        <input type="text" name="username" id="login">
+    </label>
+    <label for="password">password
+        <input type="password" name="password" id="password">
+    </label>
+    <input type="submit" value="Login">
+</form>
+{%for message in messages%}
+<p>
+    {{ message }}
+</p>
+{% endfor %}
+<div class="mt-4">
+    <a href="{%url 'ems:register' %}">register</a>
+</div>

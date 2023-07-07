@@ -1,0 +1,55 @@
+{%extends "base.html" %}
+{% block title %}personal details update form{% endblock%}
+{% block main %}
+<style>
+  .readonly{
+    background-color:#f5f5f5;
+  color:#999999;
+  cursor:not-allowed;
+}
+</style>
+<div class="border-2 border-green-800 w-1/2 mx-auto mt-1 md:p-14 bg-white shadow-2xl overflow-hidden sm:rounded-lg backdrop-blur-sm">
+    <section class=" text-center border-b-2 border-green-700">
+        <p class="text-green-800 uppercase   text-3xl">personal details update form</p> 
+<p class=" text-2xl text-blue-500 uppercase">{% for m in messages%}
+        {{m}}
+      </p>
+        {%endfor%}
+        <p>
+    </section>
+<form action="" method="POST" class="flex flex-col justify-center  uppercase  text-green-900" id="pform">
+    {% csrf_token %}
+    {%load widget_tweaks%}
+              <div class="p-4 mr-4">
+            {% for field in profileform%}
+            <div class="mb-4">
+              <div class="flex flex-col">
+                <label class="" for="{{field.id_for_label}}">{{field.label}}</label>
+              <div>
+                {{field|add_class:'focus:outline-none border-b-4 border-gray-300 inBtn text-white  rounded shadow-lg hover:shadow-xl'}}
+              </div>
+              <div class="text-red-600">
+                {{field.errors}}
+              </div>
+            </div>
+          </div>
+            {%endfor%} 
+            </div>
+        <div>
+          <button type="submit" class="py-4 focus:opacity-10 uppercase border-b-4 border-gray-500 focus:border-green-600 bg-gradient-to-r from-green-900 via-green-600 to-green-900 text-white   rounded shadow-lg hover:shadow-xl text-center w-1/3">
+            submit
+          </button>
+        </div>
+</form>
+</div>
+{% endblock %}
+
+<!-- {% if form.instance.date_of_birth %}
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    const dob=document.getElementById('date_of_birth');
+    dob.classList.add('readonly')
+    dob.disabled=true;
+      });
+  </script>
+{% endif %} -->

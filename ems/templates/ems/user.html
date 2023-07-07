@@ -1,0 +1,119 @@
+{%extends "base.html" %}
+
+{% block title %}profile{% endblock%}
+
+{% block main %}
+
+<hr>
+{{user.email}}
+
+
+{% if user.personaldetail.staff_no is None %} <hr>
+<p><a href="{% url 'ems:doc' %}">documentation</a></p>
+{% endif %}
+<hr>
+
+<table class="p-20">
+    <tbody>
+        <tr>
+        <th>two</th> 
+        <th>three</th>
+        <th>dob</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            <p class="mr-14">{{user.last_name}}
+            </p>
+        </td>
+        <td>
+            <p>{{user.first_name}}</p>
+        </td>
+        <td>
+            <p>{{user.personaldetail.staff_no}}</p>
+        </td>
+        <td>
+            <p>{{user.personaldetail.staff_no}}</p>
+        </td>
+            </tr>
+        </tbody>
+</table>
+<hr>
+<table class="p-20">
+    <tbody>
+        <tr>
+        <th>one</th> 
+        <th>two</th>
+        <th>date</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            
+        </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            </tr>
+        </tbody>
+</table>
+<hr>
+<table class="p-20">
+    <tbody>
+        <tr>
+        <th>two</th> 
+        <th>three</th>
+        <th>dob</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+            </tr>
+        </tbody>
+</table>
+<hr>
+<hr>
+<table class="p-20">
+    <tbody>
+        <tr>
+            <th>one</th>
+        <th>two</th>
+        <th>three</th>
+        <th>four</th>
+        <th></th>
+        <th></th>
+    </tr>
+        <tr>
+            <td>
+            </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<table class="p-20">
+    <tbody>
+        <tr>
+        <th>one</th> 
+        <th>two</th> 
+        <th>three</th>
+        <th>dob</th>
+        <th></th>
+    </tr>
+        </tbody>
+</table>
+
+{% endblock %}

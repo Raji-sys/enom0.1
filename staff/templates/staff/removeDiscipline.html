@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{% block title %}remove discipline{% endblock%}
+{% block main %}
+<p>are you sure you want to REMOVE this discipline for: {{user.emp.last_name}}</p>
+<hr>
+<p>this is action is not reversible!</p>
+<hr>
+
+<form action="{% url 'staff:removediscipline' user.id %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'staff:staffhome' %}">cancel</a>
+    <input type="submit" value="delete" name="confirm">
+</form>
+{% endblock %}
