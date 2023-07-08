@@ -14,6 +14,11 @@ class PersonalDetailForm(forms.ModelForm):
     class Meta:
         model = PersonalDetail
         fields = '__all__'
+        widgets = {
+            'zone': forms.Select(attrs={'id': 'id_zone'}),
+            'state': forms.Select(attrs={'id': 'id_state'}),
+            'lga': forms.Select(attrs={'id': 'id_lga'}),
+        }
         exclude = ['user']
 
 
@@ -42,6 +47,15 @@ class GovtAppForm(forms.ModelForm):
         model = GovernmentAppointment
         fields = '__all__'
         exclude = ['user']
+
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields.pop('exams_status')
+        self.fields.pop('retire')
+        self.fields.pop('rt_by')
+        self.fields.pop('due')
+        self.fields.pop('lv')
 
 
 class PromotionForm(forms.ModelForm):

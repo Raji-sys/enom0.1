@@ -3,8 +3,13 @@
 {% block title %}staff list{% endblock%}
 {% block main %}
 {%load widget_tweaks %}
-
+    <p class=" text-2xl text-blue-500 uppercase">
+  {% for m in messages%}
+      {{m}}
+    {%endfor%}  
+</p>
 <section class=" flex text-center mt-4 border-t-2 border-green-800">
+
     <form method="get">
         <div class="mt-4 flex flex-row justify-center">
         {% for field in staffFilter.form %}
@@ -16,7 +21,7 @@
             shadow-lg hover:shadow-xl text-center w-1/4" type="submit"><i class="fa-solid fa-search fa-2xl"></i></button>
         </div>
     </div>
-            </form>
+                </form>
     </section>
     <!-- <div class="flex justify-center"> -->
         <!-- {% if request.user.is_authenticated and request.user.is_superuser %} -->

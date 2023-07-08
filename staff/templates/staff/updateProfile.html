@@ -17,7 +17,7 @@
         {%endfor%}
         <p>
     </section>
-<form action="" method="POST" class="flex flex-col justify-center  uppercase  text-green-900" id="pform">
+<form action="" method="POST" id="personal-detail-form" class="flex flex-col justify-center  uppercase  text-green-900">
     {% csrf_token %}
     {%load widget_tweaks%}
               <div class="p-4 mr-4">
@@ -41,6 +41,82 @@
           </button>
         </div>
 </form>
+<script>
+  // Get the select elements
+  const zoneSelect = document.getElementById('id_zone');
+  const stateSelect = document.getElementById('id_state');
+  const lgaSelect = document.getElementById('id_lga');
+
+  // Define the available states for each zone
+  
+  const zoneStatesLGAs = {
+    'North-East': {
+      'Adamawa': ['LGA1', 'LGA2'],
+      'Bauchi': ['LGA3', 'LGA4']
+    },
+    'North-West': {
+      'Kano': ['DALA', 'FAGGE'],
+      'Kaduna': ['LGA7', 'LGA8']
+    },
+    'North-Central': {
+      'Niger': ['LGA9', 'LGA10'],
+      'Benue': ['LGA11', 'LGA12']
+    },
+    'South-East': {
+      'Enugu': ['LGA13', 'LGA14'],
+      'Imo': ['LGA15', 'LGA16']
+    },
+    'South-West': {
+      'Lagos': ['LGA17', 'LGA18'],
+      'Ogun': ['LGA19', 'LGA20']
+    },
+    'South-South': {
+      'Rivers': ['LGA21', 'LGA22'],
+      'Delta': ['LGA23', 'LGA24']
+    }
+  };
+
+  
+
+  function updateStates() {
+    const selectedZone = zoneSelect.value;
+    stateSelect.innerHTML = '<option value="">Select State</option>';
+    lgaSelect.innerHTML = '<option value="">Select LGA</option>';
+
+    if (selectedZone) {
+      const states = Object.keys(zoneStatesLGAs[selectedZone]);
+      for (let i = 0; i < states.length; i++) {
+        const option = document.createElement('option');
+        option.text = states[i];
+        option.value = states[i];
+        stateSelect.add(option);
+      }
+    }
+  }
+
+  function updateLGAs() {
+    const selectedZone = zoneSelect.value;
+    const selectedState = stateSelect.value;
+    lgaSelect.innerHTML = '<option value="">Select LGA</option>';
+
+    if (selectedZone && selectedState) {
+      const lgas = zoneStatesLGAs[selectedZone][selectedState];
+      for (let i = 0; i < lgas.length; i++) {
+        const option = document.createElement('option');
+        option.text = lgas[i];
+        option.value = lgas[i];
+        lgaSelect.add(option);
+      }
+    }
+  }
+
+  zoneSelect.addEventListener('change', updateStates);
+  stateSelect.addEventListener('change', updateLGAs);
+  // Update the form's action URL with the user ID
+  const form = document.getElementById('personal-detail-form');
+  const userId = "{{ user.id }}";  // Replace with the actual variable holding the user ID
+  form.action = form.action.replace('user_id', userId);
+</script>
 </div>
 {% endblock %}
 

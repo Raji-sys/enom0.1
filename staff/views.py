@@ -21,6 +21,8 @@ from django.utils.dateformat import DateFormat
 from datetime import  date
 from django.shortcuts import render
 from utils.ufun import con
+from django.http import JsonResponse
+
 
 
 #this functions generates csv reports with headers and body

@@ -8,6 +8,8 @@ from .forms import *
 from .decorators import *
 from staff.forms import *
 from staff.models import *
+from django.http import JsonResponse
+
 
 
 @login_required(login_url='ems:login')
@@ -72,10 +74,7 @@ def registerPage(request):
             return HttpResponseRedirect(reverse('staff:staffhome'))
 
     context = {'form': form}
-    if request.user.is_authenticated == True:
-        return HttpResponseRedirect(reverse('ems:home'))
-    else:
-        return render(request, 'ems/register.html', context)
+    return render(request, 'ems/register.html', context)
 
 
 @unauthenticated_user

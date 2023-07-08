@@ -35,9 +35,7 @@ class PersonalDetail(models.Model):
     geo_political_zone = models.TextChoices('Geo_Political_Zone', 'North-East North-West North-Central South-East South-West South-South')
     zone = models.CharField(blank=True, choices=geo_political_zone.choices, max_length=300, null=True)
    
-    states=models.TextChoices('state','Abia,Adamawa,Akwa Ibom,Anambra,Bauchi,Bayelsa,Benue,Borno,Cross-River,Delta,Ebonyi,Edo,Ekiti,Enugu,FCT-Abuja,Gombe,Imo,Jigawa,Kaduna,Kano,Katsina,Kebbi,Kogi,Kwara,Lagos,Nassarawa,Niger,Ogun,Ondo,Osun,Oyo,Plateau,Rivers,Sokoto,Taraba,Yobe,Zamfara')
-    state=models.CharField(choices=states.choices,blank=True,max_length=30, null=True)
-    # state=models.CharField(blank=True,max_length=30, null=True)
+    state=models.CharField(blank=True,max_length=30, null=True)
     lga=models.CharField(blank=True,max_length=30, null=True)
 
     senatorial_district = models.CharField(max_length=50, null=True, blank=True)
@@ -160,7 +158,7 @@ class ProfessionalQualification(models.Model):
 
     def __str__(self):
         return "{} {}".format(self.user.first_name, self.user.last_name)
- 
+
 
 
 def vMax(v):

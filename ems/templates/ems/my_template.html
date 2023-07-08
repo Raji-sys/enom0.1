@@ -1,0 +1,33 @@
+<form>
+  <select id="stateDropdown" onchange="getLGAs()">
+    <option value="">Select a state</option>
+    {% for state in states %}
+    <option value="{{ state.id }}">{{ state.name }}</option>
+    {% endfor %}
+  </select>
+
+  <select id="lgaDropdown">
+    <option value="">Select an LGA</option>
+  </select>
+</form>
+
+<script>
+  function getLGAs() {
+    const stateId = document.getElementById('stateDropdown').value;
+    const lgaDropdown = document.getElementById('lgaDropdown');
+    lgaDropdown.innerHTML = '<option value="">Select an LGA</option>';
+
+    if (stateId) {
+      fetch(`/get-lgas/${stateId}/`)
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(lga => {
+            const option = document.createElement('option');
+            option.value = lga.id;
+            option.text = lga.name;
+            lgaDropdown.appendChild(option);
+          });
+        });
+    }
+  }
+</script>
