@@ -21,23 +21,28 @@ class PersonalDetail(models.Model):
 
     staff_no = models.IntegerField(null=True, unique=True, blank=True, validators=[valMax, MaxValueValidator(999999)])
     title = models.CharField(max_length=300, null=True, blank=True)
-    sex=models.TextChoices('Gender','Male Female')
-    gender = models.CharField(choices=sex.choices, max_length=10, null=True, blank=True)
+    sex=(('MALE','MALE'),('FEMALE','FEMALE'))
+    gender = models.CharField(choices=sex, max_length=10, null=True, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
     phone_number = models.IntegerField(null=True, blank=True)
-    m_status=models.TextChoices('Marital Status','Married Single Divorced Widow Widower')
-    marital_status = models.CharField(choices=m_status.choices, max_length=100, null=True, blank=True)
+    m_status=(('MARRIED','MARRIED'), ('SINGLE','SINGLE'), ('DIVORCED','DIVORCED'), ('DIVORCEE','DIVORCEE'), ('WIDOW','WIDOW'), ('WIDOWER','WIDOWER'))
+    marital_status = models.CharField(choices=m_status, max_length=100, null=True, blank=True)
     place_of_birth = models.CharField(max_length=150, null=True, blank=True)
 
+    nationality_status=(('NIGERIAN','NIGERIAN'),('NON-CITIZEN','NON-CITIZEN'))   
+    nationality = models.CharField(choices=nationality_status, max_length=200, null=True, blank=True)
 
-    nationality_status=models.TextChoices('Nationality', 'Nigerian Non-Citizen')   
-    nationality = models.CharField(choices=nationality_status.choices,max_length=200, null=True, blank=True)
-    geo_political_zone = models.TextChoices('Geo_Political_Zone', 'North-East North-West North-Central South-East South-West South-South')
+    # geo_political_zone=(('NORTH-EAST','NORTH-EAST'),('NORTH-WEST','NORTH-WEST'),('NORTH-CENTRAL','NORTH-CENTRAL'),('SOUTH-EAST','SOUTHE-EAST'),('SOUTH-WEST','SOUTH-WEST'),('SOUTH-SOUTH','SOUTH-SOUTH'))
+    # zone = models.CharField(blank=True, choices=geo_political_zone, max_length=300, null=True)
+ 
+    geo_political_zone=models.TextChoices('GEO_POLITICAL_ZONE','NORTH-EAST NORTH-WEST NORTH-CENTRAL SOUTH-EAST SOUTH-WEST SOUTH-SOUTH')
     zone = models.CharField(blank=True, choices=geo_political_zone.choices, max_length=300, null=True)
-   
+
+    # geo_political_zone = models.TextChoices('Geo_Political_Zone', 'North-East North-West North-Central South-East South-West South-South')
+    # zone = models.CharField(blank=True, choices=geo_political_zone.choices, max_length=300, null=True)
+
     state=models.CharField(blank=True,max_length=30, null=True)
     lga=models.CharField(blank=True,max_length=30, null=True)
-
     senatorial_district = models.CharField(max_length=50, null=True, blank=True)
     
     residential_address = models.CharField(max_length=300, null=True, blank=True)
@@ -45,10 +50,10 @@ class PersonalDetail(models.Model):
     
     spouse = models.CharField(max_length=300, null=True, blank=True)
     hobbies = models.CharField(max_length=300, null=True, blank=True)
-    faith=models.TextChoices('Religion','Islam Christianity Traditional')
-    religion = models.CharField(choices=faith.choices, max_length=100, null=True, blank=True)
+    faith=(('ISLAM', 'ISLAM'), ('CHRISTIANITY','CHRISTIANITY'),('TRADITIONAL', 'TRADITIONAL'))
+    religion = models.CharField(choices=faith, max_length=100, null=True, blank=True)
 
-    qualification=models.CharField(max_length=150, null=True,blank=True)
+    # qualification=models.CharField(max_length=150, null=True,blank=True)
     
     number_of_children = models.IntegerField(null=True, blank=True)
     name_of_children = models.TextField(max_length=400, null=True, blank=True)
@@ -96,14 +101,18 @@ class Qualification(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 
     primary_school_name = models.CharField(max_length=300,null=True, blank=True)
-    primary_qualification_type = models.CharField(max_length=300,null=True,blank=True)
+
+    pc=(('TESTIMONIAL','TESTIMONIAL'), ('FIRST SCHOOL LEAVING CERTIFICATE','FIRST SCHOOL LEAVING CERTIFICATE'))
+    primary_qualification_type = models.CharField(choices=pc, max_length=300,null=True,blank=True)
+    
     primary_qualification_date_obtained = models.DateField(null=True,blank=True)
 
     secondary_school_name = models.CharField(max_length=300,null=True,blank=True)
-    secondary_qualification_type = models.CharField(max_length=300,null=True,blank=True)
+    sc=(('WAEC','WAEC'), ('NECO','NECO'),('WAEC','WAEC'))
+    secondary_qualification_type = models.CharField(choices=sc, max_length=300,null=True,blank=True)
     secondary_qualification_date_obtained = models.DateField(null=True,blank=True)
 
-    type_of_tertiary=[('university', 'University'), ('poly','Polytechnic'), ('college','College of education')]
+    type_of_tertiary=(('UNIVERSITY', 'UNIVERSITY'), ('POLYTECHNIC','POLYTECHNIC'), ('COLLEGE OF EDUCATION','COLLEGE OF EDUCATION'))
     tertiary_institution_type = models.CharField(choices=type_of_tertiary, max_length=300,null=True,blank=True)
     tertiary_institution_name = models.CharField(max_length=300,null=True,blank=True)
     tertiary_institution_qualification_type = models.CharField(max_length=300,null=True,blank=True)
@@ -177,12 +186,23 @@ class GovernmentAppointment(models.Model):
 
     date_of_first_appointment = models.DateField(null=True,blank=True)
     date_of_capt = models.DateField(null=True,blank=True)
-    type_of_appointment=models.CharField(null=True,max_length=50,blank=True)
+
+    tp=(('CASUAL','CASUAL'),('LOCUM','LOCUM'),('PERMANENT','PERMANENT'),('PROBATION', 'PROBATION'))
+    type_of_appointment=models.CharField(choices=tp, null=True,max_length=50,blank=True)
+    
+
+    
     salary_per_annum_at_date_of_first_appointment = models.FloatField(null=True,max_length=300,blank=True)
-    salary_scale = models.CharField(null=True,max_length=300,blank=True)
-    grade_level = models.CharField(null=True,max_length=300,blank=True)
+    
+    ss=(('CONHESS','CONHESS'),('CONMESS','CONMESS'), ('GIPMIS','GIPMIS'))
+    salary_scale = models.CharField(choices=ss, null=True,max_length=300,blank=True)
+    
+    gl=(('03','03'),('04','04'),('05','05'),('06','06'),('07','07'),('08','08'),('09','09'),('11','11'),('12','12'),('13','13'),('14','14'),('15','15'))
+    grade_level = models.CharField(choices=gl, null=True,max_length=300,blank=True)
     step = models.IntegerField(null=True, blank=True)
-    type_of_cadre=models.CharField(null=True, blank=True, max_length=100)
+
+    tc=(('JUNIOR','JUNIOR'), ('SENIOR','SENIOR'))
+    type_of_cadre=models.CharField(choices=tc, null=True, blank=True, max_length=100)
 
     exams_status = models.CharField(null=True, blank=True, max_length=100)
     retire=models.CharField(null=True, blank=True,max_length=50)
@@ -287,7 +307,6 @@ class ExecutiveAppointment(models.Model):
     def __str__(self):
         if self.emp:
             return f"{self.emp.last_name} {self.emp.first_name}"
-
 
 
 class Retirement(models.Model):
