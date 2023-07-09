@@ -643,8 +643,7 @@ def updateForm(request, pk):
             proqualform.save()
             govtappform.save()
             if request.user.is_superuser:
-                messages.success(request, '{} successful updated, {} {}'.format(
-                request.user, user.last_name,user.first_name))
+                messages.success(request, 'successfully updated')
                 staff_details_url=reverse('staff:staffdetail', args=[user.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -670,8 +669,7 @@ def updateUserForm(request, pk):
         if userform.is_valid():
             userform.save()
             if request.user.is_superuser:
-                messages.success(request, '{} successful updated, {} {}'.format(
-                request.user, user.last_name,user.first_name))
+                messages.success(request, 'successfully updated')
                 staff_details_url=reverse('staff:staffdetail', args=[user.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -688,7 +686,7 @@ def removeStaff(request, pk):
 
     if request.method == 'POST':
         user.delete()
-        messages.success(request, 'successful deleted: {}'.format(user.last_name))
+        messages.success(request, 'successfully deleted')
         return HttpResponseRedirect(reverse('staff:staffhome'))
     context = {'user': user}
     return render(request, 'staff/remove.html', context)
@@ -708,8 +706,7 @@ def updateProfileForm(request, pk):
         if profileform.is_valid():
             profileform.save()
             if request.user.is_superuser:
-                messages.success(request, '{} successful updated, {} {}'.format(
-                request.user, user.last_name,user.first_name))
+                messages.success(request, 'successfully updated')
                 staff_details_url=reverse('staff:staffdetail', args=[user.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -732,8 +729,7 @@ def updateQualForm(request, pk):
         if qualform.is_valid():
             qualform.save()
             if request.user.is_superuser:
-                messages.success(request, '{} successful updated, {} {}'.format(
-                request.user, user.last_name,user.first_name))
+                messages.success(request, 'successfully updated')
                 staff_details_url=reverse('staff:staffdetail', args=[user.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -756,8 +752,7 @@ def updateProQualForm(request, pk):
         if proqualform.is_valid():
             proqualform.save()
             if request.user.is_superuser:
-                messages.success(request, '{} successful updated, {} {}'.format(
-                request.user, user.last_name,user.first_name))
+                messages.success(request, 'successfully updated')
                 staff_details_url=reverse('staff:staffdetail', args=[user.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -780,7 +775,7 @@ def updateGovtAppForm(request, pk):
             
             govtappform.save()
             if request.user.is_superuser:
-                messages.success(request, '{} successful updated, {} {}'.format(request.user, user.last_name,user.first_name))
+                messages.success(request, 'successfully updated')
                 staff_details_url=reverse('staff:staffdetail', args=[user.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -803,7 +798,7 @@ def promotion(request,pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful added promotion for: {}'.format(emp.last_name))
+                messages.success(request, 'successfully added promotion')
                 staff_details_url=reverse('staff:staffdetail', args=[emp.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -826,7 +821,7 @@ def updatePromotion(request, pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful updated promotion for: {}'.format(emp.emp.last_name))
+                messages.success(request, 'successfully updated promotion')
                 staff_details_url=reverse('staff:staffdetail', args=[emp.emp.id])
                 return HttpResponseRedirect(staff_details_url)
         # # else:
@@ -844,7 +839,7 @@ def removePromotion(request, pk):
 
     if request.method == 'POST':
         user.delete()
-        messages.success(request, 'successful deleted promotion for: {}'.format(user.emp.last_name))
+        messages.success(request, 'successfully deleted promotion')
         staff_details_url=reverse('staff:staffdetail', args=[user.id])
         return HttpResponseRedirect(staff_details_url)
     context = {'user': user}
@@ -865,7 +860,7 @@ def discipline(request,pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful added discipline for: {}'.format(dis.last_name))
+                messages.success(request, 'successfully added discipline')
                 staff_details_url=reverse('staff:staffdetail', args=[dis.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -890,7 +885,7 @@ def updateDiscipline(request, pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful updated discipline for: {}'.format(dis.emp.last_name))
+                messages.success(request, 'successfully updated discipline')
                 staff_details_url=reverse('staff:staffdetail', args=[dis.emp.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -907,7 +902,7 @@ def removeDiscipline(request, pk):
 
     if request.method == 'POST':
         user.delete()
-        messages.success(request, 'successful deleted dicipline for: {}'.format(user.emp.last_name))
+        messages.success(request, 'successfully deleted dicipline')
         staff_details_url=reverse('staff:staffdetail', args=[user.id])
         return HttpResponseRedirect(staff_details_url)
     context = {'user': user}
@@ -933,7 +928,7 @@ def leave(request,pk):
                 instance.clean()  # Trigger the model's clean() m
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful created leave for: {}'.format(leave.last_name))
+                messages.success(request, 'successfully created leave')
                 staff_details_url=reverse('staff:staffdetail', args=[leave.id])
                 return HttpResponseRedirect(staff_details_url)
         else:
@@ -959,7 +954,7 @@ def updateLeave(request, pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful updated leave for: {}'.format(leave.emp.last_name))
+                messages.success(request, 'successfully updated leave')
                 staff_details_url=reverse('staff:staffdetail', args=[leave.emp.id])
                 return HttpResponseRedirect(staff_details_url)     
             # else:
@@ -977,7 +972,7 @@ def removeLeave(request, pk):
 
     if request.method == 'POST':
         user.delete()
-        messages.success(request, 'successful deleted leave for: {}'.format(user.emp.last_name))
+        messages.success(request, 'successfully deleted leave')
         staff_details_url=reverse('staff:staffdetail', args=[user.id])
         return HttpResponseRedirect(staff_details_url)
     
@@ -999,7 +994,7 @@ def execapp(request,pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful created executive apppointment for: {}'.format(execapp.last_name))
+                messages.success(request, 'successfully created executive apppointment')
                 staff_details_url=reverse('staff:staffdetail', args=[execapp.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -1022,7 +1017,7 @@ def updateExecApp(request, pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful updated executive appointment for: {}'.format(execapp.emp.last_name))
+                messages.success(request, 'successfully updated executive appointment')
                 staff_details_url=reverse('staff:staffdetail', args=[execapp.emp.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -1039,7 +1034,7 @@ def removeExecApp(request, pk):
 
     if request.method == 'POST':
         user.delete()
-        messages.success(request, 'successful deleted executive appointment for: {}'.format(user.emp.last_name))
+        messages.success(request, 'successfully deleted executive appointment')
         staff_details_url=reverse('staff:staffdetail', args=[user.id])
         return HttpResponseRedirect(staff_details_url)
     
@@ -1061,7 +1056,7 @@ def retirement(request,pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, 'successful completed retirement for: {}'.format(retire.last_name))
+                messages.success(request, 'successfully completed retirement')
                 staff_details_url=reverse('staff:staffdetail', args=[retire.id])
                 return HttpResponseRedirect(staff_details_url)
     
@@ -1082,8 +1077,7 @@ def updateRetirement(request, pk):
         if formset.is_valid():
             formset.save()
             if request.user.is_superuser:
-                messages.success(request, '{} successful updated retirement for: {} {}'.format(
-                request.user, retire.emp.last_name,retire.emp.first_name))
+                messages.success(request, 'successfully updated retirement')
                 staff_details_url=reverse('staff:staffdetail', args=[retire.emp.id])
                 return HttpResponseRedirect(staff_details_url)
         # else:
@@ -1101,7 +1095,7 @@ def removeRetire(request, pk):
 
     if request.method == 'POST':
         user.delete()
-        messages.success(request, 'successful deleted retirement entry for: {}'.format(user.emp.last_name))
+        messages.success(request, 'successfully deleted retirement entry')
         staff_details_url=reverse('staff:staffdetail', args=[user.id])
         return HttpResponseRedirect(staff_details_url)
     context = {'user': user}
