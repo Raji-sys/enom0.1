@@ -38,9 +38,9 @@ class PersonalDetail(models.Model):
     zone = models.CharField(blank=True, choices=geo_political_zone, max_length=300, null=True)
 
 
-    state=models.CharField(blank=True,max_length=30, null=True)
-    lga=models.CharField(blank=True,max_length=30, null=True)
-    senatorial_district = models.CharField(max_length=50, null=True, blank=True)
+    state=models.CharField(blank=True,max_length=300, null=True)
+    lga=models.CharField(blank=True,max_length=300, null=True)
+    senatorial_district = models.CharField(max_length=300, null=True, blank=True)
     
     residential_address = models.CharField(max_length=300, null=True, blank=True)
     permanent_home_address = models.CharField(max_length=300, null=True, blank=True)
@@ -180,7 +180,7 @@ class GovernmentAppointment(models.Model):
     dep=(
          ('ADMINISTRATION','ADMINISTRATION'),
          ('ACCOUNT','ACCOUNT'),
-         ('BIO-MEDICAL','BIO-MEDICAL')
+         ('BIO-MEDICAL','BIO-MEDICAL'),
          ('CLINICAL SERVICES','CLINICAL SERVICES'),
          ('CATERING','CATERING'),
          ('DISCIPLINE','DISCIPLINE'),
@@ -207,8 +207,8 @@ class GovernmentAppointment(models.Model):
          ('TELEPHONE','TELEPHONE'),
          ('TRANSPORT','TRANSPORT'),
          )
-    department=models.CharField(choices=dep, blank=True,max_length=50, null=True)
-    current_post=models.CharField(blank=True,max_length=30, null=True)
+    department=models.CharField(choices=dep, blank=True,max_length=300, null=True)
+    current_post=models.CharField(blank=True,max_length=300, null=True)
    
     ippis_no = models.IntegerField(null=True, unique=True, blank=True,validators=[vMax,MaxValueValidator(999999)])
 
@@ -216,7 +216,7 @@ class GovernmentAppointment(models.Model):
     date_of_capt = models.DateField(null=True,blank=True)
 
     tp=(('CASUAL','CASUAL'),('LOCUM','LOCUM'),('PERMANENT','PERMANENT'),('PROBATION', 'PROBATION'))
-    type_of_appointment=models.CharField(choices=tp, null=True,max_length=50,blank=True)
+    type_of_appointment=models.CharField(choices=tp, null=True,max_length=300,blank=True)
     
     salary_per_annum_at_date_of_first_appointment = models.FloatField(null=True,max_length=300,blank=True)
     
