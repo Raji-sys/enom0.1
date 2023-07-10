@@ -32,14 +32,11 @@ class PersonalDetail(models.Model):
     nationality_status=(('NIGERIAN','NIGERIAN'),('NON-CITIZEN','NON-CITIZEN'))   
     nationality = models.CharField(choices=nationality_status, max_length=200, null=True, blank=True)
 
-    # geo_political_zone=(('NORTH-EAST','NORTH-EAST'),('NORTH-WEST','NORTH-WEST'),('NORTH-CENTRAL','NORTH-CENTRAL'),('SOUTH-EAST','SOUTHE-EAST'),('SOUTH-WEST','SOUTH-WEST'),('SOUTH-SOUTH','SOUTH-SOUTH'))
-    # zone = models.CharField(blank=True, choices=geo_political_zone, max_length=300, null=True)
+    geo_political_zone=(('NORTH-EAST','NORTH-EAST'),('NORTH-WEST','NORTH-WEST'),('NORTH-CENTRAL','NORTH-CENTRAL'),('SOUTH-EAST','SOUTHE-EAST'),('SOUTH-WEST','SOUTH-WEST'),('SOUTH-SOUTH','SOUTH-SOUTH'))
  
-    geo_political_zone=models.TextChoices('GEO_POLITICAL_ZONE','NORTH-EAST NORTH-WEST NORTH-CENTRAL SOUTH-EAST SOUTH-WEST SOUTH-SOUTH')
-    zone = models.CharField(blank=True, choices=geo_political_zone.choices, max_length=300, null=True)
+    # geo_political_zone=models.TextChoices('GEO_POLITICAL_ZONE','NORTH-EAST NORTH-WEST NORTH-CENTRAL SOUTH-EAST SOUTH-WEST SOUTH-SOUTH')
+    zone = models.CharField(blank=True, choices=geo_political_zone, max_length=300, null=True)
 
-    # geo_political_zone = models.TextChoices('Geo_Political_Zone', 'North-East North-West North-Central South-East South-West South-South')
-    # zone = models.CharField(blank=True, choices=geo_political_zone.choices, max_length=300, null=True)
 
     state=models.CharField(blank=True,max_length=30, null=True)
     lga=models.CharField(blank=True,max_length=30, null=True)
@@ -53,7 +50,7 @@ class PersonalDetail(models.Model):
     faith=(('ISLAM', 'ISLAM'), ('CHRISTIANITY','CHRISTIANITY'),('TRADITIONAL', 'TRADITIONAL'))
     religion = models.CharField(choices=faith, max_length=100, null=True, blank=True)
 
-    # qualification=models.CharField(max_length=150, null=True,blank=True)
+    qualification=models.CharField(max_length=150, null=True,blank=True)
     
     number_of_children = models.IntegerField(null=True, blank=True)
     name_of_children = models.TextField(max_length=400, null=True, blank=True)
@@ -179,7 +176,10 @@ def vMax(v):
 
 class GovernmentAppointment(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    department=models.CharField(blank=True,max_length=50, null=True)
+
+    # dep=models.TextChoices('DEPARTMENT','INFORMATION TECHNOLOGY ACCOUNT')
+    dep=(('INFORMATION TECHNOLOGY','INFORMATION TECHNOLOGY'),('ACCOUNT','ACCOUNT'))
+    department=models.CharField(choices=dep, blank=True,max_length=50, null=True)
     current_post=models.CharField(blank=True,max_length=30, null=True)
    
     ippis_no = models.IntegerField(null=True, unique=True, blank=True,validators=[vMax,MaxValueValidator(999999)])
@@ -189,8 +189,6 @@ class GovernmentAppointment(models.Model):
 
     tp=(('CASUAL','CASUAL'),('LOCUM','LOCUM'),('PERMANENT','PERMANENT'),('PROBATION', 'PROBATION'))
     type_of_appointment=models.CharField(choices=tp, null=True,max_length=50,blank=True)
-    
-
     
     salary_per_annum_at_date_of_first_appointment = models.FloatField(null=True,max_length=300,blank=True)
     

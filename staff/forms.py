@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import *
 from django.forms import inlineformset_factory
-from django.forms import BaseFormSet
+
 
 class PersonalDetailForm(forms.ModelForm):    
     def clean_date_of_birth(self):
@@ -15,9 +15,11 @@ class PersonalDetailForm(forms.ModelForm):
         model = PersonalDetail
         fields = '__all__'
         widgets = {
-            'zone': forms.Select(attrs={'id': 'id_zone'}),
-            'state': forms.Select(attrs={'id': 'id_state'}),
-            'lga': forms.Select(attrs={'id': 'id_lga'}),
+            'zone':forms.Select(attrs={'id':'id_zone'}),
+            'state':forms.Select(attrs={'id':'id_state'}),
+            'lga':forms.Select(attrs={'id':'id_lga'}),
+            'department':forms.Select(attrs={'id':'id_department'}),
+            'current_post':forms.Select(attrs={'id':'id_current_post'}),
         }
         exclude = ['user']
 
@@ -46,6 +48,10 @@ class GovtAppForm(forms.ModelForm):
     class Meta:
         model = GovernmentAppointment
         fields = '__all__'
+        widgets = {
+            'department':forms.Select(attrs={'id':'id_department'}),
+            'current_post':forms.Select(attrs={'id':'id_current_post'}),
+        }
         exclude = ['user']
 
     def __init__(self,*args, **kwargs):

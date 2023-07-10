@@ -47,6 +47,7 @@
   const stateSelect = document.getElementById('id_state');
   const lgaSelect = document.getElementById('id_lga');
 
+
   // Define the available states for each zone
   const zoneStatesLGAs = {
     'NORTH-EAST': {
@@ -138,6 +139,7 @@
 
   zoneSelect.addEventListener('change', updateStates);
   stateSelect.addEventListener('change', updateLGAs);
+
   // Update the form's action URL with the user ID
   const form = document.getElementById('personal-detail-form');
   const userId = "{{ user.id }}";  // Replace with the actual variable holding the user ID
