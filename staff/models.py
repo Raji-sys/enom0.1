@@ -177,8 +177,34 @@ def vMax(v):
 class GovernmentAppointment(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 
-    # dep=models.TextChoices('DEPARTMENT','INFORMATION TECHNOLOGY ACCOUNT')
-    dep=(('INFORMATION TECHNOLOGY','INFORMATION TECHNOLOGY'),('ACCOUNT','ACCOUNT'))
+    dep=(
+         ('ADMINISTRATION','ADMINISTRATION'),
+         ('ACCOUNT','ACCOUNT'),
+         ('BIO-MEDICAL','BIO-MEDICAL')
+         ('CLINICAL SERVICES','CLINICAL SERVICES'),
+         ('CATERING','CATERING'),
+         ('DISCIPLINE','DISCIPLINE'),
+         ('ENGINEERING','ENGINEERING'),
+         ('INTERNAL AUDIT','INTERNAL AUDIT'),
+         ('INFORMATION TECHNOLOGY','INFORMATION TECHNOLOGY'),
+         ('LEGAL','LEGAL'),
+         ('LIBRARY','LIBRARY'),
+         ('MEDICAL RECORD','MEDICAL RECORD'),
+         ('PATHOLOGY','PATHOLOGY'),
+         ('PHARMACY','PHARMACY'),
+         ('PHYSIOTHERAPHY','PHYSIOTHERAPHY'),
+         ('PROSTHETIC AND ORTHOTICS','PROSTHETIC AND ORTHOTICS'),
+         ('PLANNING','PLANNING'),
+         ('PROCUMENT','PROCUMENT'),
+         ('PUBLIC HEALTH','PUBLIC HEALTH'),
+         ('OCCUPATIONAL THERAPHY','OCCUPATIONAL THERAPHY'),
+         ('RADIOLOGY','RADIOLOGY'),
+         ('REGISTRY','REGISTRY'),
+         ('SOCIAL WELFARE','SOCIAL WELFARE'),
+         ('STORE','STORE'),
+         ('TELEPHONE','TELEPHONE'),
+         ('TRANSPORT','TRANSPORT'),
+         )
     department=models.CharField(choices=dep, blank=True,max_length=50, null=True)
     current_post=models.CharField(blank=True,max_length=30, null=True)
    
