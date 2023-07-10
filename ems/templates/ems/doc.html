@@ -125,8 +125,6 @@
   const zoneSelect=document.getElementById('id_zone');
   const stateSelect=document.getElementById('id_state');
   const lgaSelect = document.getElementById('id_lga');
-  const depSelect=document.getElementById('id_department');
-  const cpSelect=document.getElementById('id_current_post');
 
   // Define the available states for each zone
   const zoneStatesLGAs = {
@@ -185,16 +183,6 @@
     }
   };
 
-  const depCp={
-    IT:[
-      'PROGRAM ANALYST I',
-      'PROGRAM ANALYST II'
-  ],
-    ACCOUNT:[
-      'ACCOUNTANT I',
-      'ACCOUNTANT II'
-  ]
-  };
 
   function UpdatePosts(){
     const selectedDepartment=depSelect.value;
@@ -245,12 +233,10 @@
 
   zoneSelect.addEventListener('change', updateStates);
   stateSelect.addEventListener('change', updateLGAs);
-  depSelect.addEventListener('change', updatePosts);
 
-  // Get the select elements
+
   const departmentSelect=document.getElementById('id_department');
   const postSelect=document.getElementById('id_current_post');
-
   const postOptions={
     'ADMINISTRATION':[
     'ACTING MEDICAL DIRECTOR',

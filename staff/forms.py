@@ -18,8 +18,6 @@ class PersonalDetailForm(forms.ModelForm):
             'zone':forms.Select(attrs={'id':'id_zone'}),
             'state':forms.Select(attrs={'id':'id_state'}),
             'lga':forms.Select(attrs={'id':'id_lga'}),
-            'department':forms.Select(attrs={'id':'id_department'}),
-            'current_post':forms.Select(attrs={'id':'id_current_post'}),
         }
         exclude = ['user']
 

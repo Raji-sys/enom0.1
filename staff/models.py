@@ -32,7 +32,7 @@ class PersonalDetail(models.Model):
     nationality_status=(('NIGERIAN','NIGERIAN'),('NON-CITIZEN','NON-CITIZEN'))   
     nationality = models.CharField(choices=nationality_status, max_length=200, null=True, blank=True)
 
-    geo_political_zone=(('NORTH-EAST','NORTH-EAST'),('NORTH-WEST','NORTH-WEST'),('NORTH-CENTRAL','NORTH-CENTRAL'),('SOUTH-EAST','SOUTHE-EAST'),('SOUTH-WEST','SOUTH-WEST'),('SOUTH-SOUTH','SOUTH-SOUTH'))
+    geo_political_zone=(('NORTH-EAST','NORTH-EAST'),('NORTH-WEST','NORTH-WEST'),('NORTH-CENTRAL','NORTH-CENTRAL'),('SOUTH-EAST','SOUTH-EAST'),('SOUTH-WEST','SOUTH-WEST'),('SOUTH-SOUTH','SOUTH-SOUTH'))
  
     # geo_political_zone=models.TextChoices('GEO_POLITICAL_ZONE','NORTH-EAST NORTH-WEST NORTH-CENTRAL SOUTH-EAST SOUTH-WEST SOUTH-SOUTH')
     zone = models.CharField(blank=True, choices=geo_political_zone, max_length=300, null=True)
@@ -180,7 +180,7 @@ class GovernmentAppointment(models.Model):
     dep=(
          ('ADMINISTRATION','ADMINISTRATION'),
          ('ACCOUNT','ACCOUNT'),
-         ('BIO-MEDICAL','BIO-MEDICAL'),
+         ('BIO-MEDICAL ENGINEERING','BIO-MEDICAL ENGINEERING'),
          ('CLINICAL SERVICES','CLINICAL SERVICES'),
          ('CATERING','CATERING'),
          ('DISCIPLINE','DISCIPLINE'),
