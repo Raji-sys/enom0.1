@@ -7,16 +7,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','@#$%nth_h&&d0merta8080mali-=4f5xdk*_xljm%+5svi*7-xqng$8rm4mgp0o&h+fdhp0w)pp9(^*=_=/,````~~~~;')
 
 
-DEBUG=os.environ.get('DJANGO_DEBUG','') != 'False'
+# DEBUG=os.environ.get('DJANGO_DEBUG','') != 'False'
+DEBUG=False
 
 ALLOWED_HOSTS = ['*']
 
-# SECURE_HSTS_SECONDS=31536000
-# SECURE_HSTS_INCLUDE_SUBDOMAINS=True
-# SECURE_SSL_REDIRECT=True
-# SECURE_HSTS_PRELOAD=True
-# SESSION_COOKIE_SECURE=True
-# CSRF_COOKIE_SECURE=True
+SECURE_HSTS_SECONDS=31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS=True
+SECURE_SSL_REDIRECT=True
+SECURE_HSTS_PRELOAD=True
+SESSION_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE=True
 
 
 INSTALLED_APPS = [
@@ -129,6 +130,6 @@ DATETIME_INPUT_FORMAT=['%d-%m-%Y']
 
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
